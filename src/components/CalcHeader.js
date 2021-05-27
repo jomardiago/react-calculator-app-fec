@@ -1,19 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function CalcHeader({ handleOnSelectChange }) {
+function CalcHeader({ rangeValue, handleOnSelectChange }) {
     return (
         <Header>
             <p>Calculator</p>
-            <div className="calc-header-theme-container">
-                <form className="calc-header-theme-form">
-                    <label htmlFor="themes" className="sm-font">Choose a theme: </label>
-                    <select name="themes" id="themes" className="theme-select sm-font" onChange={handleOnSelectChange}>
-                        <option value="theme1" className="sm-font">Theme 1</option>
-                        <option value="theme2" className="sm-font">Theme 2</option>
-                        <option value="theme3" className="sm-font">Theme 3</option>
-                    </select>
-                </form>
+            <div className="theme-select">
+                <label htmlFor="slider" className="sm-font">THEME</label>
+                <input type="range" name="theme" value={rangeValue} id="slider" min="1" max="3" onChange={handleOnSelectChange}/>
             </div>
         </Header>
     );
@@ -25,10 +19,17 @@ const Header = styled.div`
     text-align: center;
 
     .theme-select {
-        border: 1px solid var(--toggle-keypad-bg);
-        background-color: var(--toggle-keypad-bg);
-        padding: .3rem 1rem;
-        margin-left: .2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        input {
+            margin-left: .2rem;
+        }
+
+        label {
+            padding-top: 0.1rem;
+        }
     }
 `;
 

@@ -7,9 +7,12 @@ import CalcHeader from './CalcHeader';
 import CalcKeypad from './CalcKeypad';
 import CalcScreen from './CalcScreen';
 
+const themes = ['theme1', 'theme2', 'theme3'];
+
 function Calculator() {
     const [theme, setTheme] = React.useState('theme1');
     const [userInputs, setUserInputs] = React.useState('');
+    const [rangeValue, setRangeValue] = React.useState('1');
 
     React.useEffect(()=>{
         document.documentElement.className = theme;
@@ -38,12 +41,13 @@ function Calculator() {
     }
 
     function handleOnSelectChange(e) {
-        setTheme(e.target.value);
+        setTheme(themes[parseInt(e.target.value) - 1]);
+        setRangeValue(e.target.value);
     }
 
     return (
         <CalculatorMain className="theme">
-            <CalcHeader handleOnSelectChange={handleOnSelectChange} />
+            <CalcHeader rangeValue={rangeValue} handleOnSelectChange={handleOnSelectChange} />
             <CalcScreen userInputs={userInputs} />
             <CalcKeypad handleClick={handleClick}/>
         </CalculatorMain>

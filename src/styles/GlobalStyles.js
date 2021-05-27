@@ -92,6 +92,18 @@ const GlobalStyles = createGlobalStyle`
     .xs-font {
         font-size: 0.3rem;
     }
+
+    input[type=range] {
+        height: 24px;
+        -webkit-appearance: none;
+        margin: 10px 0;
+        width: 100%;
+        border-radius: 1rem;
+        padding: 0.3rem;
+        max-width: 25%;
+        background-color: var(--toggle-keypad-bg);
+        cursor: pointer;
+    }
 `;
 
 export default GlobalStyles;
